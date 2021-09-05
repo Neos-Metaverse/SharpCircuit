@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SharpCircuitTest</RootNamespace>
     <AssemblyName>SharpCircuitTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,13 +76,13 @@
     <Compile Include="src\VoltageWaveTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharpCircuits\SharpCircuit.csproj">
-      <Project>{a31fa9f2-bb15-469e-92de-870dee03a82b}</Project>
-      <Name>SharpCircuit</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\SharpCircuits\SharpCircuit.csproj">
+      <Project>{66c46d0d-75c8-402a-95ab-76de912c136b}</Project>
+      <Name>SharpCircuit</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

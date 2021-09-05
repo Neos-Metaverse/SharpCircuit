@@ -38,6 +38,13 @@ steps:
     packagesToPack: '**\SharpCircuit.csproj'
     configuration: '$(buildConfiguration)'
     versioningScheme: 'byPrereleaseNumber'
-    majorVersion: '0'
-    minorVersion: '1'
+    majorVersion: '1'
+    minorVersion: '0'
     patchVersion: '0'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'd04c348e-3752-477f-9659-fb7b72738d76/951cbf21-f9fe-4ddf-835a-1992fcbc702b'

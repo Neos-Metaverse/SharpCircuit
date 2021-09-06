@@ -6,7 +6,7 @@ namespace SharpCircuit {
 
 	public class SwitchSPDT : SwitchSPST {
 
-		public Circuit.Lead leadC { get { return lead1; } }
+		public Circuit.Lead leadC { get { return new Circuit.Lead(this, 2); } }
 
 		public SwitchSPDT() : base() {
 			posCount = 3;

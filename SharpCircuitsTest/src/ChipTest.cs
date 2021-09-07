@@ -148,6 +148,43 @@ namespace SharpCircuitTest {
 			Debug.Log("|Q ", dflip0.getLeadVoltage(2));
 			Debug.Log();
 
+			dflip0.hasResetPin = true;
+			sim.analyze();
+			sim.doTicks(200);
+
+			Debug.Log();
+			Debug.Log("D  ", dflip0.getLeadVoltage(0));
+			Debug.Log("CLK", dflip0.getLeadVoltage(3));
+			Debug.Log(" Q ", dflip0.getLeadVoltage(1));
+			Debug.Log("|Q ", dflip0.getLeadVoltage(2));
+			Debug.Log("R", dflip0.getLeadVoltage(4));
+			Debug.Log();
+
+			dflip0.hasSetPin = true;
+			sim.analyze();
+			sim.doTicks(200);
+
+			Debug.Log();
+			Debug.Log("D  ", dflip0.getLeadVoltage(0));
+			Debug.Log("CLK", dflip0.getLeadVoltage(3));
+			Debug.Log(" Q ", dflip0.getLeadVoltage(1));
+			Debug.Log("|Q ", dflip0.getLeadVoltage(2));
+			Debug.Log("R", dflip0.getLeadVoltage(4));
+			Debug.Log("S", dflip0.getLeadVoltage(5));
+			Debug.Log();
+
+			dflip0.hasResetPin = false;
+			sim.analyze();
+			sim.doTicks(200);
+
+			Debug.Log();
+			Debug.Log("D  ", dflip0.getLeadVoltage(0));
+			Debug.Log("CLK", dflip0.getLeadVoltage(3));
+			Debug.Log(" Q ", dflip0.getLeadVoltage(1));
+			Debug.Log("|Q ", dflip0.getLeadVoltage(2));
+			Debug.Log("S", dflip0.getLeadVoltage(4));
+			Debug.Log();
+
 			Assert.Ignore();
 		}
 

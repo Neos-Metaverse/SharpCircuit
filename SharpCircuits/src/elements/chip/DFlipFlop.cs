@@ -79,6 +79,8 @@ namespace SharpCircuit {
 
 			if (hasSetPin)
 				pins[hasResetPin ? 5 : 4] = new Pin("S");
+
+			allocLeads();
 		}
 
 		public override int getLeadCount() {

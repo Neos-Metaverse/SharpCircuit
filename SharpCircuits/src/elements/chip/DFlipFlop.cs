@@ -10,6 +10,27 @@ namespace SharpCircuit {
 		public Circuit.Lead leadQ { get { return lead1; } }
 		public Circuit.Lead leadQL { get { return new Circuit.Lead(this, 2); } }
 		public Circuit.Lead leadCLK { get { return new Circuit.Lead(this, 3); } }
+		public Circuit.Lead leadR
+        {
+			get
+            {
+				if (!hasResetPin)
+					throw new Exception("DFlipFlop doesn't have reset pin");
+
+				return new Circuit.Lead(this, 4);
+            }
+        }
+
+		public Circuit.Lead leadS
+		{
+			get
+			{
+				if (!hasSetPin)
+					throw new Exception("DFlipFlop doesn't have set pin");
+
+				return new Circuit.Lead(this, hasResetPin ? 5 : 4);
+			}
+		}
 
 		public bool hasResetPin {
 			get {
@@ -53,13 +74,11 @@ namespace SharpCircuit {
 			pins[3] = new Pin("");
 			pins[3].clock = true;
 
-			if(!hasSetPin) {
-				if(hasResetPin)
-					pins[4] = new Pin("R");
-			} else {
-				pins[5] = new Pin("S");
+			if (hasResetPin)
 				pins[4] = new Pin("R");
-			}
+
+			if (hasSetPin)
+				pins[hasResetPin ? 5 : 4] = new Pin("S");
 		}
 
 		public override int getLeadCount() {
@@ -82,7 +101,7 @@ namespace SharpCircuit {
 				pins[1].value = pins[0].value;
 				pins[2].value = !pins[0].value;
 			}
-			if(hasSetPin && pins[5].value) {
+			if(hasSetPin && pins[hasResetPin ? 5 : 4].value) {
 				pins[1].value = true;
 				pins[2].value = false;
 			}
